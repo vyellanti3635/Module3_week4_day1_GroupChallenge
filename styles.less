@@ -1,0 +1,101 @@
+// Import external variable files
+@import "colors.less";
+@import "dimensions.less";
+
+//Using variables
+@r: 0;
+@g: 0;
+@b: 0;
+
+// Variable interpolation examples
+@prefix: card;
+@property: color;
+
+//Using extend
+.globalstyle {
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+    line-height:1.5;
+}
+
+// Mixin example
+.border-radius(@radius: 5px) {
+    border-radius: @radius;
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+}
+
+html {
+    &:extend(.globalstyle);
+}
+body {
+    &:extend(.globalstyle);
+}
+
+//Using nesting
+.card {
+    .card-info {
+        list-style-type: none;
+        padding: 0;
+        margin:0;
+        border: 1px solid rgb(175, 174, 174) !important;
+        text-align:center;
+        .border-radius(8px); // Using the mixin
+        li {
+            padding: 8px 16px;
+            border-bottom:1px solid #ddd
+        }
+        li:last-child {
+            border-bottom: none
+        }
+        .card-item {
+            padding-top: 16px !important;
+            padding-bottom:16px !important;
+            span {
+                font-weight: bold;
+            }
+            .card-wide {
+                letter-spacing: 4px
+            }
+            .card-opacity {
+                opacity:0.60
+            }
+        }
+        .card-btn {
+            color: #000 !important;
+            background-color: @secondary-color !important;
+            padding-top: 24px !important;
+            padding-bottom: 24px !important;
+            .button {
+                color: #fff !important;
+                background-color: @primary-color !important;
+                padding: 12px 24px !important;
+                .border-radius(4px); // Using mixin with different parameter
+            }
+        }
+    }
+    .card-shadow:hover {
+        box-shadow: 0 4px 10px 0 rgba(@r, @g, @b, 0.2), 0 4px 20px 0 rgba(@r, @g, @b, 0.19)
+    }
+    .card-header {
+        color: #fff !important;
+        background-color: #000 !important;
+        font-size:24px !important;
+        padding-top: @large-padding !important;
+        padding-bottom: @large-padding !important
+    }
+    
+    // Variable interpolation example 1: using @prefix in selector
+    .@{prefix}-interpolated {
+        background-color: #f9f9f9;
+        padding: 10px;
+    }
+    
+    // Variable interpolation example 2: using @property in property name
+    .card-dynamic {
+        @{property}: #333;
+        font-weight: bold;
+    }
+}
+
+
