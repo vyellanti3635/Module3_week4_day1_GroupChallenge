@@ -1,4 +1,12 @@
 {
+  "name": "https-server-demo",
+  "version": "1.0.0",
+  "description": "Simple HTTPS server with Node.js",
+  "main": "https-server.js",
+  "scripts": {
+    "start": "node https-server.js",
+    "dev": "node https-server.js"
+  },
   "dependencies": {
     "less": "^4.5.1"
   }
